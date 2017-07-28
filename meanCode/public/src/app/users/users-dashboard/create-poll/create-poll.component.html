@@ -1,0 +1,62 @@
+<p>
+  create-poll works!
+</p>
+
+<h1>Put the Question and Options Here:</h1>
+
+<form (submit)="addQuestion()" #formData="ngForm">
+  <div>
+    <label for="question">Question: </label>
+    <textarea name='question' [(ngModel)]='new_poll.question' #question="ngModel" minlength=8 required></textarea>
+
+    <div *ngIf="question.errors && (question.touch || question.dirty)">
+      <span *ngIf="question?.errors.required" class='error'>You must submit a question!</span>
+      <span *ngIf="question?.errors.minlength" class='error'>Your question must be 8 letters or more.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="option1">Option 1: </label>
+    <input name='option1' [(ngModel)]='new_poll.option1' #option1="ngModel" minlength=3 required>
+
+    <div *ngIf="option1.errors && (option1.touch || option1.dirty)">
+      <span *ngIf="option1.errors.required" class='error'>You must have an option 1!</span>
+      <span *ngIf="option1.errors.minlength" class='error'>Your option must be 3 letters or more.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="option2">Option 2: </label>
+    <input name='option2' [(ngModel)]='new_poll.option2' #option2="ngModel" minlength=3 required>
+
+    <div *ngIf="option2.errors && (option2.touch || option2.dirty)">
+      <span *ngIf="option2.errors.required" class='error'>You must provide an option 2!</span>
+      <span *ngIf="option2.errors.minlength" class='error'>Your option must be 3 letters or more.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="option3">Option 3: </label>
+    <input name='option3' [(ngModel)]='new_poll.option3' #option3="ngModel" minlength=3 required>
+
+    <div *ngIf="option3.errors && (option3.touch || option3.dirty)">
+      <span *ngIf="option3.errors.required" class='error'>You must provide an option 3!</span>
+      <span *ngIf="option3.errors.minlength" class='error'>Your option must be 3 letters or more.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="option4">Option 4: </label>
+    <input name='option4' [(ngModel)]='new_poll.option4' #option4="ngModel" minlength=3 required>
+
+    <div *ngIf="option4.errors && (option4.touch || option4.dirty)">
+      <span *ngIf="option4.errors.required" class='error'>You must provide an option 3!</span>
+      <span *ngIf="option4.errors.minlength" class='error'>Your option must be 3 letters or more.</span>
+    </div>
+  </div>
+
+
+  <button [routerLink]="['/dashboard']">Cancel</button>
+  <input type="submit" value="Create Poll" [disabled]="!formData.valid">
+
+</form>

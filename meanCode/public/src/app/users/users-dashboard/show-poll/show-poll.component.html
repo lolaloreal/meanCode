@@ -1,0 +1,22 @@
+<p>Search :<input type='text' name='search_string' [(ngModel)]='search_string'></p>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Survey Question</th>
+		<th>Date Posted</th>
+        <th>Action</th>
+
+	</tr>
+	<p> | filter: search_string works, but is throwing errors so I have taken it off of the search</p>
+	<tr *ngFor="let poll of poll_list">
+		<td> {{ poll._users }}</td>
+
+		<td [routerLink]="['/polls', poll._id]">{{ poll.question }}</td>
+		<td>{{ poll.createdAt | date:'longDate'}}</td>
+
+        <td><button (click)="delete(poll)">Delete</button></td>
+	</tr>
+</table>
+ <!--  -->
+ <!-- | sort:'created_At'  -->
